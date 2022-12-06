@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Javascript Quiz</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<header>
+
+</header>
+<body class="bg-danger">
+    <h1 class="text-center bg-primary">JAVASCRIPT CODING QUIZ!</h1>
+    <div class="row vh-100">
+      <!-- THIS DIV HAS THE GAME -->
+      <div class="col-9 border justify-content-center ">
+
+        <!-- HEADER TO START GAME -->
+        <div id="gmeHead">
+        <p>PLAY THE GAME</p>
+        <button id="start" class="rounded">START QUIZ</button>
+        </div>
+        <!-- DISPLAYS THE QUESTIONS -->
+        <div>
+          <!-- question -->
+          <h2 id="queHead" class="align-items-center"></h2>
+          </h2>
+          <!-- choices .... turn into a div class? -->
+          <button id="choice1" class="value"></button>
+          <button id="choice2" class="value"></button>
+          <button id="choice3" class="value"></button>
+          <button id="choice4" class="value"></button>
+
+        </div>
+
+      </div>
+
+      <!-- THIS DIV HAS THE TIMER AND PREVIOUS SCORES -->
+      <div class="col-3 border align-items-center">
+        <!-- THIS DIV HAS THE TIMER -->
+        <div class="h-25">
+          <p>Time Left</p>
+          <p id="timer" class="fs-1 text-white"></p>
+        </div>
+        
+
+        <hr />
+        <!-- TIS DIV HAS THE LAST SCORES -->
+        <div>
+          <p>YOUR LAST SCORE</p>
+          <p id="highScore"></p>
+          <p id="message"></p>
+          <button>CLEAR SCORES</button>
+        </div>
+
+      </div>
+    </div>
+    <!-- Added link to the jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script src = "assets/script.js"></script>
+</body>
+</html>
