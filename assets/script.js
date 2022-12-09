@@ -1,4 +1,12 @@
 // list of variables
+var userAnswer = "TEXT"
+    $('button').on("click", function (event) {
+        userAnswer = $(this).text();
+        //  value.innerText.questions.choices;
+       console.log(userAnswer);
+    }
+        
+    );
 
 // list of questions
 var questions = [
@@ -110,20 +118,15 @@ function checkQuestion(event) {
     // if (element.matches("button") === true) {
     //     var userAnswer = element.getAttribute("button");
     // }
-
-    var userAnswer =$('button').click(function () {
-         $(this).valueOf();
-         value.innerText.questions.choices;
-    }
-        
-    );
-
+    
+    
     // //user's answer
     // var userAnswer = e.target.textContent;
     //current question
     var question = questions[currentQuestion];
     //correct answer
-    console.log(userAnswer)
+    //console.log(userAnswer)
+    
     console.log(question.answer)
     console.log(question.title)
     if (userAnswer === questions.answer) {
