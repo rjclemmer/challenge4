@@ -1,12 +1,25 @@
-// list of variables
-var userAnswer = "TEXT"
+
+//function that displays the last saved score from local storage
+renderLastScore();
+
+function renderLastScore () {
+    var lastEntry = JSON.parse(localStorage.getItem('highScore'));
+    
+    var lastScore = lastEntry.score;
+    var lastUser = lastEntry.init
+    $("#highScore").text(lastUser + lastScore)
+}
+
+//global variable for buttonclick 
+var userAnswer = " "
     $('button').on("click", function (event) {
         userAnswer = $(this).text();
-        //  value.innerText.questions.choices;
        console.log(userAnswer);
     }
         
     );
+
+
 
 // list of questions
 var questions = [
@@ -53,9 +66,8 @@ var questions = [
 var startBtn = document.querySelector("#start");
 
 //hides questions until quiz starts
-// var hide =$("#hide");
-// hide.style.display = 'none';
-// all the variable and elements
+$("#hide").hide()
+
 
 startBtn.addEventListener("click",playGame);
 
@@ -72,14 +84,9 @@ var choice4El = $('#choice4');
 
 // game function
 function playGame () {
+    $("#hide").show()
     gameHeaderEl.text('');
-    // questionHeadEl.text('WHAT IS THE MEANING OF LIFE');
-    // choice1El.text('A');
-    // choice2El.text('B');
-    // choice3El.text('C');
-    // choice4El.text('D');
-    //unhide choices
-    // hide.style.display = 'block'
+  
     console.log("LETS PLAY A GAME!");
     countdown();
     getQuestion();
@@ -101,59 +108,58 @@ function getQuestion() {
     choice3El.text(question.choices[2]);
     choice4El.text(question.choices[3]);
 
+
+    
 }
 
-//answer question
+//code to answer questions
+
 document.getElementById("choice1").addEventListener("click", checkQuestion);
 document.getElementById("choice2").addEventListener("click", checkQuestion);
 document.getElementById("choice3").addEventListener("click", checkQuestion);
 document.getElementById("choice4").addEventListener("click", checkQuestion);
 
+// compares user's answer to the correct answer
 function checkQuestion(event) {
-    // // e.preventDefault();
-    // if (!e.target.matches('button'))
-    // return;
-    
-    // var element = event.target;
-    // if (element.matches("button") === true) {
-    //     var userAnswer = element.getAttribute("button");
-    // }
-    
-    
-    // //user's answer
-    // var userAnswer = e.target.textContent;
-    //current question
+  
     var question = questions[currentQuestion];
-    //correct answer
-    //console.log(userAnswer)
-    
-    console.log(question.answer)
-    console.log(question.title)
-    if (userAnswer === questions.answer) {
+
+    if (userAnswer === question.answer) {
         alert("Correct!");
+        userScore += 5
     } else {
         alert("Incorrect");
         secondsLeft -= 10;
     }
-
+    if(currentQuestion < questions.length -1){
     currentQuestion++
     getQuestion()
-    if (currentQuestion > 6) {
-        questionHeadEl.text("GAME OVER");
-
-
-        
     }
-    saveHighScore();
-
-
+    else{
+        endGame();
+        timeEl.text("Your FinalScore:" + ( userScore + secondsLeft));
+        saveHighScore();
+    }
 }
+
+// function that occurs once the game ends
+function endGame(){ 
+    
+    questionHeadEl.text("GAME OVER");
+    console.log("game over!");
+    $("#hide").hide();
+    clearInterval(timerInterval);
+}
+
 
 function saveHighScore() {
     // get initials and final score
     let initials = prompt("Enter Your Initials:");
     let finalScore = userScore + secondsLeft;
-    var highScore = { init: initials, score: finalScore};   
+    console.log("final score = " + finalScore);
+    var highScore = { init: initials, score: finalScore};
+    var lastScore = JSON.parse(localStorage.getItem("highScore"))
+      
 
     document.getElementById('highScore').textContent = initials + " " + finalScore;
     document.getElementById('message').textContent = lastScore;
@@ -161,42 +167,25 @@ function saveHighScore() {
     localStorage.setItem("highScore", JSON.stringify(highScore));
 }
     
-//     var lastScore = JSON.parse(localStorage.getItem("highScore"));
-//     // saving to a new object
 
-//     localStorage.setItem("highScore", JSON.stringify(highScore));
-
-// }
-
-//compare results
-
-//next question
-
-// Need a timer
 var timeEl = $('#timer');
-var secondsLeft = 60;
+var secondsLeft = 45;
 
-
+var timerInterval 
 function countdown() {
-    var timerInterval = setInterval(function( ) {
+     timerInterval = setInterval(function( ) {
         secondsLeft--;
         timeEl.text(secondsLeft + " seconds left!!!");
 
         if (secondsLeft < 1) {
-            clearInterval(timerInterval);
-            timeEl.text("GAME OVER :)");
-            questionHeadEl.text("GAME OVER");
-            choice1El.text('');
-            choice2El.text('');
-            choice3El.text('');
-            choice4El.text('');
-        
-            return
+            timeEl.text("Your Final Score:" + ( userScore + secondsLeft));
+            endGame();
+            saveHighScore();
+            
         }
     }, 1000)
 
 }
 
-// Need a way to track results
 
 
