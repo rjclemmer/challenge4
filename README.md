@@ -1,17 +1,21 @@
 # 04 Web APIs: Code Quiz
-The assignment asked for a timed coding quiz with multiple choice questions. After the quiz, users should be able to enter their initials.
+The assignment asked for a timed coding quiz with multiple choice questions. After the quiz, users are be able to enter their initials.
 
-This is still a work in progress. While the timer and quiz questions load, there are still issues with buttons targeting correct answers and the prompt asking a user's initials shows up at the wrong time.
+Thank you to instructors and tutors for their help debugging parts of the code.
 
 
 ## Link
 https://rjclemmer.github.io/challenge4/
 
+## Screenshot
+
+<img src="./assets/screenshot.png" alt="Photo of Challenge4" title="Photo of Challenge4">
+
 
 
 ## Your Task
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
 
 To help familiarize you with these tests and allow you to use the skills covered in this module, this Challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
 

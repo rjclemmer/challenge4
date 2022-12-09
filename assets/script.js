@@ -84,11 +84,13 @@ var choice4El = $('#choice4');
 
 // game function
 function playGame () {
+    countdown();
+    
     $("#hide").show()
     gameHeaderEl.text('');
   
     console.log("LETS PLAY A GAME!");
-    countdown();
+    
     getQuestion();
    
 
